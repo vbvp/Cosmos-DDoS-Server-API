@@ -18,3 +18,6 @@ Usage: http://[SERVER_IP]:5000/flood?key=[KEY]&target=[TARGET]&port=[PORT]&time=
 [To do]
 
 - Add black list using a range of ips on the same network
+
+
+If you need help setting this up -> https://t.me/ambuscade
