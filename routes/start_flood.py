@@ -31,12 +31,17 @@ def flood():
             "response_message": "Missing argument(s). Null values."
         })
     
+    # this is to be updated... code is a bit ugly... definitly not my proudest validation.
     if not Validation.validate_ip(target):
         if not Validation.validate_url(target):
             return jsonify({
                 "response_code": 102,
                 "response_message": "Target is not an Ipv4 or an URL."
             })
+        else:
+            screen_name = urlparse(target).netloc # get the domain name out of the url and use it as the screen instance name
+    else:
+        screen_name = target # if its an ip just keep it that way for the screen name
 
 
     ssh = paramiko.SSHClient()
@@ -94,11 +99,36 @@ def flood():
             "time": datetime.datetime.now()
         })
 
-    except:
+    except paramiko.BadAuthenticationType:
         return jsonify({
-            "response_code": 105,
-            "response_message": "Server error.",
+            "response_code": 106,
+            "response_message": "Bad authentication type error.",
         })
+
+    except paramiko.BadHostKeyException:
+        return jsonify({
+            "response_code": 107,
+            "response_message": "Bad Host key error.",
+        })
+
+    except paramiko.PasswordRequiredException:
+        return jsonify({
+            "response_code": 108,
+            "response_message": "PasswordRequired error.",
+        })
+
+    except paramiko.SSHException:
+        return jsonify({
+            "response_code": 109,
+            "response_message": "SSH2  error.",
+        })
+
+    except: # return diffent codes for ??
+        return jsonify({
+            "response_code": 110,
+            "response_message": "SSH client uncaught error.",
+        })
+
 
     
         
