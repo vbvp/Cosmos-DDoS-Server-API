@@ -28,7 +28,9 @@ def basic_error(e):
     return "Unknown error logged. Contact staff."+str(e)
 
 if __name__ == "__main__":
+
     init()
+
     print(Fore.MAGENTA, """
 
    ____                                   _    ____ ___ 
@@ -36,12 +38,15 @@ if __name__ == "__main__":
  | |   / _ \/ __| '_ ` _ \ / _ \/ __|   / _ \ | |_) | | 
  | |__| (_) \__ \ | | | | | (_) \__ \  / ___ \|  __/| | 
   \____\___/|___/_| |_| |_|\___/|___/ /_/   \_\_|  |___|
+
+  [Made by robert streahorn aka robert]
+            [t.me/ambuscade]
                                                         
     """, Fore.RESET)
 
     if PRODUCTION:
         print(Fore.GREEN, "API server started.", Fore.RESET)
-        serve(app, host="0.0.0.0", port=5000)
+        serve(app, host="0.0.0.0", port=5000) # change port here if you want
     else:
         Thread(target=app.run, kwargs={"threaded":True}).start()
 

