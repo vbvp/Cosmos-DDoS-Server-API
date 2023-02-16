@@ -7,11 +7,13 @@ will add more updates in the future..
 
 [Tutorial (not a good tutorial at all)]
 
-1: Change keys in admin_keys.json
+1: Install requirements (py -m pip install requirements)
 
-2: Change your commands in the route start_flood.py
+2: Change keys in admin_keys.json
 
-3: Launch your server
+3: Change your commands in the route start_flood.py
+
+4: Launch your server
 
 Usage: http://[SERVER_IP]:5000/flood?key=[KEY]&target=[TARGET]&port=[PORT]&time=[TIME]&method=[METHOD]
 
