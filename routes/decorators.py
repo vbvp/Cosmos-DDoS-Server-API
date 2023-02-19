@@ -61,7 +61,7 @@ class RouteDecorators:
         def decorated_function(*args, **kwargs):
             webhook = DiscordWebhook(url='https://discord.com/api/webhooks/1076963329278484530/VT7JCbTOQEfRBOJ9jy-L1v9n3zVgFTteLUCrDHdfoLSsY7MV___PbXD5Xab_cSdbTPBi')
 
-            embed = DiscordEmbed(title='Cosmic API', color='100500')
+            embed = DiscordEmbed(title='Cosmos API', color='100500')
             embed.set_timestamp()
 
             for x,y in request.args.items():
