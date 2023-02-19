@@ -31,6 +31,12 @@ def flood():
             "response_message": "Missing argument(s). Null values."
         })
     
+    if Validation.ip_list_blacklist(target) or Validation.ip_range_blacklist(target):
+        return jsonify({
+                "response_code": 102,
+                "response_message": "Target is blacklisted."
+            })
+
     # big fucking validation block here... just dont change it .... 
     # this is to be updated... code is a bit ugly... definitly not my proudest validation.
     if not Validation.validate_ip(target):
@@ -43,6 +49,7 @@ def flood():
             screen_name = urlparse(target).netloc # get the domain name out of the url and use it as the screen instance name
     else:
         screen_name = target # if its an ip just keep it that way for the screen name
+        
 
     if not Validation.validate_port(port):
         return jsonify({

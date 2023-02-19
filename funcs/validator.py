@@ -1,4 +1,5 @@
-import validation, validators, ipaddress
+import validation, validators, ipaddress, json
+from ipaddress import IPv4Address, IPv4Network
 
 class Validation:
 
@@ -32,3 +33,31 @@ class Validation:
     @staticmethod
     def validate_url(url):
         return validators.url(url)
+    
+    # this method was taken from one of my project
+    @staticmethod
+    def ip_range_blacklist(ip) -> tuple[bool ,str]:
+
+        with open("data/blacklist.json") as e:
+            data = json.load(e)
+
+        list = data["ranges"]
+        
+        for (range, name) in list.items():
+            try:
+                if IPv4Address(ip) in IPv4Network(range):
+                    return True, name # its blacklisted
+            except Exception:
+                continue
+        
+        return False, None
+
+    @staticmethod
+    def ip_list_blacklist(ip):
+        with open("data/blacklist.json") as e:
+            data = json.load(e)
+
+        list = data["hosts"]
+
+        if ip in list:
+            return True
