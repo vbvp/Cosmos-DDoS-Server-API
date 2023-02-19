@@ -13,9 +13,11 @@ will add more updates in the future..
 
 2: Change keys in admin_keys.json
 
-3: Change your commands in the route start_flood.py
+3: Change your webhook in decorators.py
 
-4: Launch your server
+4: Change your commands in the route start_flood.py
+
+5: Start the api (py main.py)
 
 Usage: http://[SERVER_IP]:5000/flood?key=[KEY]&target=[TARGET]&port=[PORT]&time=[TIME]&method=[METHOD]
 
