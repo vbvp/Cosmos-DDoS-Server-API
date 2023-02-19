@@ -41,11 +41,12 @@ class Validation:
         with open("data/blacklist.json") as e:
             data = json.load(e)
 
-        list = data["ranges"]
+        list = dict(data["ranges"])
         
         for (range, name) in list.items():
             try:
                 if IPv4Address(ip) in IPv4Network(range):
+                    print(ip, range)
                     return True, name # its blacklisted
             except Exception:
                 continue

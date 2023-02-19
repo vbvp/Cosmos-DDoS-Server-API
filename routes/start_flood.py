@@ -11,6 +11,7 @@ Flood = Blueprint("Flood", __name__)
 
 @Flood.route("/flood", methods=["GET"])
 @RouteDecorators.log
+@RouteDecorators.discord_webbhook_log
 @RouteDecorators.admin_key_required
 def flood():
 
@@ -31,11 +32,12 @@ def flood():
             "response_message": "Missing argument(s). Null values."
         })
     
-    if Validation.ip_list_blacklist(target) or Validation.ip_range_blacklist(target):
+    if Validation.ip_list_blacklist(target):
         return jsonify({
                 "response_code": 102,
-                "response_message": "Target is blacklisted."
+                "response_message": "Target is blacklisted by ip address."
             })
+
 
     # big fucking validation block here... just dont change it .... 
     # this is to be updated... code is a bit ugly... definitly not my proudest validation.
