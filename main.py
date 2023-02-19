@@ -14,7 +14,7 @@ app = Flask(__name__, None, "static")
 
 logging.basicConfig(filename='data/record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
-app.secret_key = "niggerfaggot3975862389756783265"
+app.secret_key = "iwyvdfg08372tr8yv3o20a9s87fdgpi23vyrsxnjm"
 
 app.register_blueprint(Flood)
 
