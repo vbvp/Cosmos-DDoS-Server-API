@@ -1,4 +1,4 @@
-# DDoS-Server-API
+# Cosmos Stresser API made by Robert
 big d00s server api. nothing complicated at all.... i made this in 20 minutes. yet its already better than most of the open source php ones. 
 
 It works with python-flask and waitress. Routes GET arguments are validated with mozilla-bleach and some other validations techniques (ip, port, time....). I also use paramiko to create a ssh request and execute commands (i dont parse any in-out tho.... might do that in the future). The biggest change is using a match-case to parse method and execute different CMDS according to your l33t hacking scripts (most of php ones use if-elif-elif-elif-elif-elif type shit). 
