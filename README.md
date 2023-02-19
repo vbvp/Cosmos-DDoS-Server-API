@@ -6,6 +6,7 @@ It works with python-flask and waitress. Routes GET arguments are validated with
 will add more updates in the future..
 
 ![2023-02-15 17_14_07-C__Windows_System32_cmd exe - py  main py](https://user-images.githubusercontent.com/70919730/219189832-31fb5b66-d8f9-4b10-bc34-a50b40d82fcb.png)
+![2023-02-19 15_42_39-#general _ robert 's server - Discord](https://user-images.githubusercontent.com/70919730/219974109-914cfa4a-b6e1-4097-82ce-abed274e4d37.png)
 
 [Tutorial (not a good tutorial at all)]
 
