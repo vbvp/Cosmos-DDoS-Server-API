@@ -6,6 +6,7 @@ from threading import Thread
 from waitress import serve
 #routes
 from routes.start_flood import Flood
+from routes.status import Status
 
 
 PRODUCTION = True
@@ -17,6 +18,7 @@ logging.basicConfig(filename='data/record.log', level=logging.DEBUG, format=f'%(
 app.secret_key = "iwyvdfg08372tr8yv3o20a9s87fdgpi23vyrsxnjm"
 
 app.register_blueprint(Flood)
+app.register_blueprint(Status)
 
 @app.errorhandler(404)
 def error_404(e):
